@@ -1,0 +1,1 @@
+{"note":"Copy this over data.json to reset test data.","test_users":[{"email":"buyer@booknest.test","role":"buyer"},{"email":"seller@booknest.test","role":"seller"}],"seed_books":12,"seed_orders":2}

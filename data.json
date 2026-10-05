@@ -1,0 +1,24 @@
+{
+  "books": [
+    {"id":101,"title":"Atomic Habits","author":"James Clear","category":"Self Help","price":399,"condition":"Like New","rating":4.9,"seller":"Aarav Books","stock":7,"isbn":"9781847941831"},
+    {"id":102,"title":"The Alchemist","author":"Paulo Coelho","category":"Fiction","price":249,"condition":"Very Good","rating":4.8,"seller":"Reader's Corner","stock":5,"isbn":"9780062315007"},
+    {"id":103,"title":"Python Crash Course","author":"Eric Matthes","category":"Technology","price":599,"condition":"Good","rating":4.7,"seller":"CodeShelf","stock":8,"isbn":"9781718502703"},
+    {"id":104,"title":"The Lean Startup","author":"Eric Ries","category":"Business","price":449,"condition":"Like New","rating":4.6,"seller":"BizReads","stock":4,"isbn":"9780307887894"},
+    {"id":105,"title":"Engineering Mathematics","author":"B. S. Grewal","category":"Academic","price":699,"condition":"Good","rating":4.5,"seller":"Campus Books","stock":11,"isbn":"9788194747841"},
+    {"id":106,"title":"Clean Code","author":"Robert C. Martin","category":"Technology","price":549,"condition":"Very Good","rating":4.9,"seller":"CodeShelf","stock":6,"isbn":"9780132350884"},
+    {"id":107,"title":"Deep Work","author":"Cal Newport","category":"Self Help","price":329,"condition":"Like New","rating":4.7,"seller":"Aarav Books","stock":9,"isbn":"9781455586691"},
+    {"id":108,"title":"Rich Dad Poor Dad","author":"Robert Kiyosaki","category":"Business","price":299,"condition":"Acceptable","rating":4.4,"seller":"BizReads","stock":3,"isbn":"9781612680194"},
+    {"id":109,"title":"The Pragmatic Programmer","author":"David Thomas","category":"Technology","price":749,"condition":"Very Good","rating":4.9,"seller":"CodeShelf","stock":5,"isbn":"9780135957059"},
+    {"id":110,"title":"Ikigai","author":"Héctor García","category":"Self Help","price":279,"condition":"Good","rating":4.6,"seller":"Reader's Corner","stock":12,"isbn":"9780143130727"},
+    {"id":111,"title":"1984","author":"George Orwell","category":"Fiction","price":199,"condition":"Good","rating":4.8,"seller":"Reader's Corner","stock":10,"isbn":"9780451524935"},
+    {"id":112,"title":"Operating System Concepts","author":"Silberschatz","category":"Academic","price":799,"condition":"Very Good","rating":4.7,"seller":"Campus Books","stock":4,"isbn":"9781119456339"}
+  ],
+  "users": [
+    {"id":1,"name":"Test Buyer","email":"buyer@booknest.test","role":"buyer"},
+    {"id":2,"name":"Test Seller","email":"seller@booknest.test","role":"seller"}
+  ],
+  "orders": [
+    {"id":"BN1001","userId":1,"date":"2026-09-28","status":"Delivered","total":648,"items":[{"bookId":101,"qty":1},{"bookId":102,"qty":1}]},
+    {"id":"BN1002","userId":1,"date":"2026-10-02","status":"Processing","total":599,"items":[{"bookId":103,"qty":1}]}
+  ]
+}

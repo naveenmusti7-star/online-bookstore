@@ -1,0 +1,12 @@
+const express=require('express'),fs=require('fs'),path=require('path');
+const app=express(),PORT=process.env.PORT||3000,FILE=path.join(__dirname,'data.json');
+app.use(express.json());app.use(express.static(__dirname));
+const read=()=>JSON.parse(fs.readFileSync(FILE,'utf8'));const write=d=>fs.writeFileSync(FILE,JSON.stringify(d,null,2));
+app.get('/api/books',(req,res)=>{let b=read().books,q=(req.query.q||'').toLowerCase(),c=req.query.category||'All';if(q)b=b.filter(x=>`${x.title} ${x.author} ${x.category}`.toLowerCase().includes(q));if(c!=='All')b=b.filter(x=>x.category===c);res.json(b)});
+app.get('/api/books/:id',(req,res)=>{let b=read().books.find(x=>x.id==req.params.id);b?res.json(b):res.status(404).json({error:'Book not found'})});
+app.post('/api/books',(req,res)=>{let d=read(),x=req.body;if(!x.title||!x.author||!x.category||!Number(x.price))return res.status(400).json({error:'Missing required fields'});let b={id:Date.now(),title:x.title,author:x.author,category:x.category,price:+x.price,condition:x.condition||'Good',rating:5,seller:x.seller||'Test Seller',stock:+x.stock||1,isbn:x.isbn||''};d.books.unshift(b);write(d);res.status(201).json(b)});
+app.post('/api/orders',(req,res)=>{let d=read(),items=req.body.items||[];if(!items.length)return res.status(400).json({error:'Cart is empty'});let total=0;for(const i of items){let b=d.books.find(x=>x.id==i.bookId);if(!b||b.stock<i.qty)return res.status(400).json({error:'Insufficient stock'});total+=b.price*i.qty}items.forEach(i=>d.books.find(x=>x.id==i.bookId).stock-=i.qty);let o={id:'BN'+Math.floor(1000+Math.random()*9000),userId:req.body.userId||1,date:new Date().toISOString().slice(0,10),status:'Processing',total,items};d.orders.unshift(o);write(d);res.status(201).json(o)});
+app.get('/api/orders',(req,res)=>res.json(read().orders.filter(x=>x.userId===(+req.query.userId||1))));
+app.get('/api/stats',(req,res)=>{let d=read();res.json({books:d.books.length,sellers:new Set(d.books.map(x=>x.seller)).size,orders:d.orders.length,revenue:d.orders.reduce((s,x)=>s+x.total,0)})});
+app.get('/api/users',(req,res)=>res.json(read().users));
+app.listen(PORT,()=>console.log(`BookNest running at http://localhost:${PORT}`));

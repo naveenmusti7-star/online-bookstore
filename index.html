@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BookNest - Buy and sell new and pre-owned books online.">
+  <title>BookNest | Buy. Sell. Read.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="BookNest home">
+        <span class="brand-mark">B</span><span>Book<span class="brand-accent">Nest</span></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+      <nav id="mainNav">
+        <a href="#home">Home</a>
+        <a href="#shop">Browse</a>
+        <a href="#sell">Sell a Book</a>
+        <a href="#about">About</a><a href="#dashboard">Dashboard</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" id="wishlistBtn" title="Wishlist">♡ <span id="wishCount">0</span></button>
+        <button class="icon-btn" id="cartBtn" title="Cart">🛒 <span id="cartCount">0</span></button>
+        <button class="btn btn-dark" id="loginBtn">Sign in</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">YOUR NEXT GREAT READ</span>
+          <h1>Discover books.<br><span>Share stories.</span></h1>
+          <p>Buy affordable new and pre-owned books, or turn the books you no longer need into cash.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#shop">Explore books →</a>
+            <a class="btn btn-outline" href="#sell">Sell your books</a>
+          </div>
+          <div class="trust-row">
+            <div><strong>10K+</strong><small>Books listed</small></div>
+            <div><strong>4.8/5</strong><small>Reader rating</small></div>
+            <div><strong>24/7</strong><small>Easy browsing</small></div>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="Stack of books illustration">
+          <div class="book-stack">
+            <div class="book b1"><span>THE<br>CREATIVE<br>MIND</span></div>
+            <div class="book b2"><span>DATA<br>SCIENCE</span></div>
+            <div class="book b3"><span>THE<br>ALCHEMIST</span></div>
+            <div class="book b4"><span>ATOMIC<br>HABITS</span></div>
+          </div>
+          <div class="circle-note">Read more.<br>Spend less.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="categories section">
+      <div class="container">
+        <div class="section-head"><div><span class="eyebrow">EXPLORE</span><h2>Browse by category</h2></div></div>
+        <div class="category-grid">
+          <button class="category-card" data-category="Technology"><span>💻</span><b>Technology</b><small>Programming & IT</small></button>
+          <button class="category-card" data-category="Fiction"><span>📖</span><b>Fiction</b><small>Stories & novels</small></button>
+          <button class="category-card" data-category="Business"><span>📈</span><b>Business</b><small>Skills & strategy</small></button>
+          <button class="category-card" data-category="Self Help"><span>🌱</span><b>Self Help</b><small>Grow every day</small></button>
+          <button class="category-card" data-category="Academic"><span>🎓</span><b>Academic</b><small>Study smarter</small></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="shop section" id="shop">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="eyebrow">THE BOOKSHELF</span><h2>Find your next book</h2></div>
+          <div class="search-wrap"><input id="searchInput" type="search" placeholder="Search title, author or category..."> <span>⌕</span></div>
+        </div>
+        <div class="shop-toolbar">
+          <div class="filters" id="filters">
+            <button class="filter active" data-filter="All">All</button>
+            <button class="filter" data-filter="Technology">Technology</button>
+            <button class="filter" data-filter="Fiction">Fiction</button>
+            <button class="filter" data-filter="Business">Business</button>
+            <button class="filter" data-filter="Self Help">Self Help</button>
+            <button class="filter" data-filter="Academic">Academic</button>
+          </div>
+          <select id="sortSelect" aria-label="Sort books">
+            <option value="featured">Sort: Featured</option>
+            <option value="low">Price: Low to high</option>
+            <option value="high">Price: High to low</option>
+            <option value="rating">Highest rated</option>
+          </select>
+        </div>
+        <div class="book-grid" id="bookGrid"></div>
+        <p class="empty-state" id="emptyState" hidden>No books match your search. Try another keyword.</p>
+      </div>
+    </section>
+
+    <section class="sell section" id="sell">
+      <div class="container sell-grid">
+        <div>
+          <span class="eyebrow">TURN SHELVES INTO CASH</span>
+          <h2>Have books collecting dust?</h2>
+          <p>List your books in minutes. Set your price, describe the condition, and connect with readers who are looking for their next read.</p>
+          <ul class="benefits">
+            <li><span>✓</span> Free book listing</li>
+            <li><span>✓</span> Set your own price</li>
+            <li><span>✓</span> Reach fellow readers</li>
+          </ul>
+        </div>
+        <form class="sell-form" id="sellForm">
+          <h3>List a book</h3>
+          <div class="form-grid">
+            <label>Book title<input name="title" required placeholder="e.g. Clean Code"></label>
+            <label>Author<input name="author" required placeholder="e.g. Robert C. Martin"></label>
+            <label>Category<select name="category"><option>Technology</option><option>Fiction</option><option>Business</option><option>Self Help</option><option>Academic</option></select></label>
+            <label>Price (₹)<input name="price" type="number" min="1" required placeholder="499"></label>
+            <label class="full">Condition<select name="condition"><option>Like New</option><option>Very Good</option><option>Good</option><option>Acceptable</option></select></label>
+            <label class="full">Description<textarea name="description" rows="3" placeholder="Tell buyers about your book..."></textarea></label>
+          </div>
+          <button class="btn btn-primary full-btn" type="submit">Publish listing →</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="about section" id="about">
+      <div class="container about-box">
+        <div><span class="eyebrow">WHY BOOKNEST</span><h2>A marketplace made for readers.</h2></div>
+        <div class="about-text"><p>BookNest connects readers and sellers in one simple place. Whether you're building a college library, hunting for a classic, or clearing your shelf, you can discover useful books at accessible prices.</p><div class="mini-stats"><span><b>Easy</b> to list</span><span><b>Simple</b> to shop</span><span><b>Reader-first</b> experience</span></div></div>
+      </div>
+    </section>
+  <section class="section" id="dashboard"><div class="container"><div class="section-head"><div><span class="eyebrow">TEST DASHBOARD</span><h2>Marketplace data</h2></div><button class="btn btn-dark" id="ordersBtn">My orders</button></div><div class="dash-grid"><div class="dash-card">📚<b id="statBooks">—</b><small>Books</small></div><div class="dash-card">👥<b id="statSellers">—</b><small>Sellers</small></div><div class="dash-card">📦<b id="statOrders">—</b><small>Orders</small></div><div class="dash-card">₹<b id="statRevenue">—</b><small>Demo revenue</small></div></div></div></section></main>
+
+  <footer><div class="container footer-inner"><div><a class="brand" href="#home"><span class="brand-mark">B</span><span>Book<span class="brand-accent">Nest</span></span></a><p>Buy. Sell. Read. Repeat.</p></div><div><b>Marketplace</b><a href="#shop">Browse books</a><a href="#sell">Sell a book</a></div><div><b>Support</b><a href="#about">About us</a><a href="#home">Help center</a></div></div><div class="copyright">© 2026 BookNest. Demo storefront for educational use.</div></footer>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
